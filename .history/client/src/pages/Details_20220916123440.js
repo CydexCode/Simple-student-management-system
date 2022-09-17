@@ -28,8 +28,8 @@ function Details() {
     
   }
 
-  useEffect( () => {
-    axios.get(`/api/users/${id}`).then((res) => {
+  useEffect(async () => {
+    await axios.get(`/api/users/${id}`).then((res) => {
       setForm(res.data);
     });
   }, []);
@@ -45,20 +45,20 @@ function Details() {
             value={form.Email}
           />
           <InputGroup
-            label="LastName"
+            label="Lastname"
             type="text"
-            name="LastName"
+            name="Lastname"
             onChangeHandler={onChangeHandler}
-            errors={errors.LastName}
-            value={form.LastName}
+            errors={errors.Lastname}
+            value={form.Lastname}
           />
           <InputGroup
-            label="FirstName"
+            label="Firstname"
             type="text"
-            name="FirstName"
+            name="Firstname"
             onChangeHandler={onChangeHandler}
-            errors={errors.FirstName}
-            value={form.FirstName}
+            errors={errors.Firstname}
+            value={form.Firstname}
           />
           <InputGroup
             label="Age"

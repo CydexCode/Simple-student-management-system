@@ -13,10 +13,6 @@ const AddUser = async (req, res) => {
         } else {
           await Users.create(req.body);
           res.status(201).json({ message: "User added with success" });
-          LastName= "",
-          FirstName="",
-          Age = "",
-          Email = ""
         }
       });
     }
@@ -29,7 +25,6 @@ const FindAllUsers = async (req, res) => {
   try {
     const data = await Users.find();
     res.status(201).json(data);
-
   } catch (error) {
     console.log(error.message);
   }

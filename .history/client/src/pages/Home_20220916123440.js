@@ -53,8 +53,8 @@ function Home() {
     }
    }
   /* find all users */
-  useEffect( () => {
-     axios.get("/api/users").then((res) => {
+  useEffect(async () => {
+    await axios.get("/api/users").then((res) => {
       setUsers(res.data);
     });
   });
@@ -66,20 +66,26 @@ function Home() {
       </div>
       <div className="col-12 col-lg-4">
         <form onSubmit={onSubmitHandler}>
-          
           <InputGroup
-            label="LastName"
+            label="Email"
             type="text"
-            name="LastName"
+            name="Email"
             onChangeHandler={onChangeHandler}
-            errors={errors.LastName}
+            errors={errors.Email}
           />
           <InputGroup
-            label="FirstName"
+            label="Lastname"
             type="text"
-            name="FirstName"
+            name="Lastname"
             onChangeHandler={onChangeHandler}
-            errors={errors.FirstName}
+            errors={errors.Lastname}
+          />
+          <InputGroup
+            label="Firstname"
+            type="text"
+            name="Firstname"
+            onChangeHandler={onChangeHandler}
+            errors={errors.Firstname}
           />
           <InputGroup
             label="Age"
@@ -88,13 +94,6 @@ function Home() {
             onChangeHandler={onChangeHandler}
             errors={errors.Age}
           />
-          <InputGroup
-            label="Email"
-            type="text"
-            name="Email"
-            onChangeHandler={onChangeHandler}
-            errors={errors.Email}
-          />
           <button className="btn btn-primary" type="submit">Add user</button>
         </form>
       </div>
@@ -102,22 +101,20 @@ function Home() {
         <table className="table">
           <thead>
             <tr>
-             
-              <th scope="col">LastName</th>
-              <th scope="col">FirstName</th>
-              <th scope="col">Age</th>
               <th scope="col">Email</th>
+              <th scope="col">Lastname</th>
+              <th scope="col">Firstname</th>
+              <th scope="col">Age</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {users.map(({ Email, LastName, FirstName, Age, _id }) => (
+            {users.map(({ Email, Lastname, Firstname, Age, _id }) => (
               <RowDetails
-              
-                LastName={LastName}
-                FirstName={FirstName}
-                Age={Age}
                 Email={Email}
+                Lastname={Lastname}
+                Firstname={Firstname}
+                Age={Age}
                 Id={_id}
                 OnDelete={OnDelete}
               />
